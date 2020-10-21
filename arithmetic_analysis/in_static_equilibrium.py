@@ -6,13 +6,14 @@ flake8 : passed
 mypy : passed
 """
 
-from numpy import array, cos, sin, radians, cross  # type: ignore
-from typing import List
+from __future__ import annotations
+
+from numpy import array, cos, cross, radians, sin  # type: ignore
 
 
 def polar_force(
     magnitude: float, angle: float, radian_mode: bool = False
-) -> List[float]:
+) -> list[float]:
     """
     Resolves force along rectangular components.
     (force, angle) => (force_x, force_y)
@@ -54,11 +55,8 @@ def in_static_equilibrium(
 if __name__ == "__main__":
     # Test to check if it works
     forces = array(
-        [
-            polar_force(718.4, 180 - 30),
-            polar_force(879.54, 45),
-            polar_force(100, -90)
-        ])
+        [polar_force(718.4, 180 - 30), polar_force(879.54, 45), polar_force(100, -90)]
+    )
 
     location = array([[0, 0], [0, 0], [0, 0]])
 

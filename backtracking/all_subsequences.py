@@ -1,39 +1,43 @@
-'''
-	In this problem, we want to determine all possible subsequences
-	of the given sequence. We use backtracking to solve this problem.
+from typing import Any, List
 
-	Time complexity: O(2^n),
-	where n denotes the length of the given sequence.
-'''
+"""
+        In this problem, we want to determine all possible subsequences
+        of the given sequence. We use backtracking to solve this problem.
 
-
-def generate_all_subsequences(sequence):
-	create_state_space_tree(sequence, [], 0)
+        Time complexity: O(2^n),
+        where n denotes the length of the given sequence.
+"""
 
 
-def create_state_space_tree(sequence, current_subsequence, index):
-	'''
-	Creates a state space tree to iterate through each branch using DFS.
-	We know that each state has exactly two children.
-	It terminates when it reaches the end of the given sequence.
-	'''
-
-	if index == len(sequence):
-		print(current_subsequence)
-		return
-
-	create_state_space_tree(sequence, current_subsequence, index + 1)
-	current_subsequence.append(sequence[index])
-	create_state_space_tree(sequence, current_subsequence, index + 1)
-	current_subsequence.pop()
+def generate_all_subsequences(sequence: List[Any]) -> None:
+    create_state_space_tree(sequence, [], 0)
 
 
-'''
-remove the comment to take an input from the user 
+def create_state_space_tree(
+    sequence: List[Any], current_subsequence: List[Any], index: int
+) -> None:
+    """
+    Creates a state space tree to iterate through each branch using DFS.
+    We know that each state has exactly two children.
+    It terminates when it reaches the end of the given sequence.
+    """
+
+    if index == len(sequence):
+        print(current_subsequence)
+        return
+
+    create_state_space_tree(sequence, current_subsequence, index + 1)
+    current_subsequence.append(sequence[index])
+    create_state_space_tree(sequence, current_subsequence, index + 1)
+    current_subsequence.pop()
+
+
+"""
+remove the comment to take an input from the user
 
 print("Enter the elements")
 sequence = list(map(int, input().split()))
-'''
+"""
 
 sequence = [3, 1, 2, 4]
 generate_all_subsequences(sequence)

@@ -1,11 +1,11 @@
 #!/usr/bin/python
-# encoding=utf8
 
 # Author: OMKAR PATHAK
 
 # We can use Python's dictionary for constructing the graph.
 
-class AdjacencyList(object):
+
+class AdjacencyList:
     def __init__(self):
         self.List = {}
 
@@ -17,10 +17,11 @@ class AdjacencyList(object):
             self.List[fromVertex] = [toVertex]
 
     def printList(self):
-        for i  in self.List:
-            print((i,'->',' -> '.join([str(j) for j in self.List[i]])))
+        for i in self.List:
+            print((i, "->", " -> ".join([str(j) for j in self.List[i]])))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     al = AdjacencyList()
     al.addEdge(0, 1)
     al.addEdge(0, 4)
